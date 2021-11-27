@@ -1,3 +1,4 @@
+      //get final residual amount...
         private decimal CalculateFinalResidualAmount(XConnection connection, SM1Order order, SessionContext sc)
         {
             if (order == null)
@@ -63,7 +64,8 @@
 
             return residualAmount + paidAmount - orderedAmount;
         }
-        //DAL CUSTOMIZATION CR-4 - 20180305 - MA: AGGIUNTI ANCHE I CODTYPORD  DELIVERD E BOZZA(SOSPESO) , ESCLUSI LE FATTURE CON PAYMENTMODE = CASH.. 
+        //DAL CUSTOMIZATION CR-4 - 20180305 - MA: AGGIUNTI ANCHE I CODTYPORD  DELIVERD E BOZZA(SOSPESO) , ESCLUSI LE FATTURE CON PAYMENTMODE = CASH..
+        //calculate the order amount dynamnic calc & effect the residual amount credit...
         private decimal CalculateOrderedAmount_cust(XConnection connection, SM1Order order, SessionContext sc)
         {
             List<string> statuses = new List<string>() { SM1OrderStatus.VALIDO, SM1OrderStatus.BLOCCATO, SM1OrderStatus.CLOSED, SM1OrderStatus.INVOICED };
